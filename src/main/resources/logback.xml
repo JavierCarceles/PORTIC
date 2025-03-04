@@ -1,0 +1,67 @@
+<configuration>
+    <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>/app/COMMON/logs/gestorNotificacionComprobacionMmpp-40-Back.%d{yyyy-MM-dd-HH}.%i.log</fileNamePattern>
+            <!-- each file should be at most 100MB, keep 15 days worth of history, but at most 2GB -->
+            <maxFileSize>100MB</maxFileSize>
+            <maxHistory>15</maxHistory>
+            <totalSizeCap>2GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{ISO8601} | %-5level | %thread | %logger{1} | %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{ISO8601} | %-5level | %thread | %logger{1} | %m%n</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+
+    <springProfile name="local">
+        <logger name="net.portic.GestorComprobacionNotificacionMMPP" level="DEBUG"/>
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="ROLLING"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="dev">
+        <logger name="net.portic.GestorComprobacionNotificacionMMPP" level="DEBUG"/>
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="ROLLING"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="qa">
+        <logger name="net.portic.GestorComprobacionNotificacionMMPP" level="DEBUG"/>
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="ROLLING"/>
+        </root>
+    </springProfile>
+
+   <!-- <springProfile name="tinglado">
+        <logger name="net.portic.GestorComprobacionNotificacionMMPP" level="DEBUG"/>
+        <root level="DEBUG">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="ROLLING"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="qa">
+        <logger name="net.portic.GestorComprobacionNotificacionMMPP" level="DEBUG"/>
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="ROLLING"/>
+        </root>
+    </springProfile> -->
+
+    <root level="ALL">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="ROLLING" />
+    </root>
+</configuration>

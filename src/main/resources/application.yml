@@ -1,0 +1,32 @@
+spring:
+  jackson.property-naming-strategy: SNAKE_CASE
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  liquibase:
+    #disable or enable liquibase
+    enabled: false
+management:
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-components: always
+      show-details: always
+      probes:
+        enabled: true
+server:
+  servlet:
+    context-path: /gestorComprobacionNotificacionMmpp
+buzones:
+  destESMTApache : app-desa.portic.net
+  portESMTApache: 80
+  uriNotifyServlet: /buzones/NotifyFile
+  reboteMailhost: mailhost.portic.net

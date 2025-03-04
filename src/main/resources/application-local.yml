@@ -1,0 +1,52 @@
+spring:
+  application.name: gestorComprobacionNotificacionMMPP
+  ## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
+  datasource:
+    url: jdbc:oracle:thin:@//cloradscan.portic.net/picdes
+    driverClassName: oracle.jdbc.OracleDriver
+    username: PORTIC
+    password: Tolos_01
+
+  # The SQL dialect makes Hibernate generate better SQL for the chosen database
+  jpa:
+    properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+    #properties.hibernate.driver.class.name: oracle.jdbc.driver.OracleDriver
+    show-sql: true
+    javax:
+      persistence:
+        query:
+          timeout: 60000
+
+  liquibase:
+    enabled: false
+
+  messages:
+    basename: messages/messages
+    encoding: UTF-8
+
+  #swagger upload file
+#  servlet.multipart.enabled: true
+#  servlet.multipart.max-file-size: 2MB
+
+#  data:
+#    mongodb:
+#      uri: mongodb://lsprailUser:EqpBLuiA_88@mngdbd00.portic.net/lsprail-DESA
+#      show-sql: true
+
+#nivel de log
+logging:
+  level:
+    root: info
+    net:
+      portic:
+        GestorComprobacionNotificacionMMPP: debug
+    org.hibernate.SQL: info
+    org.hibernate.type.descriptor.sql: info
+#    org.springframework.data.mongodb.core.MongoTemplate: info
+
+# ENVIO BUZONES (Para notificationes de Aduana)
+
+# ENVIO EMAIL
+
+REBOTE_MAILHOST : mailhost.portic.net
+SEND_EMAIL_OUTSIDE : false

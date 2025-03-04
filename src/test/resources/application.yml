@@ -1,0 +1,47 @@
+server:
+  servlet:
+    context-path: /adt
+
+spring:
+  application.name: portic-adt-api
+
+  ## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=Oracle;
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+
+  # The SQL dialect makes Hibernate generate better SQL for the chosen database
+  jpa:
+    properties.hibernate.dialect: org.hibernate.dialect.H2Dialect
+    show-sql: true
+
+  #liquibase.contexts=dev
+  liquibase:
+    change-log: classpath:db/liquibase-changelog.xml
+    #disable or enable liquibase
+    enabled: true
+
+  messages:
+    basename: messages/messages
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  #swagger upload file
+#  servlet.multipart.enabled: false
+#  servlet.multipart.max-file-size: 2MB
+
+#nivel de log
+logging:
+  level:
+    root: INFO
+    org.hibernate.SQL: TRACE
+    org.hibernate.type.descriptor.sql: TRACE
+
+# ENVIO EMAIL
+REBOTE_MAILHOST : mailhost.portic.net
+SEND_EMAIL_OUTSIDE : false

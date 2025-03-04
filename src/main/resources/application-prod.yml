@@ -1,0 +1,32 @@
+spring:
+  application.name: gestorComprobacionNotificacionMMPP
+
+  ## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
+  datasource:
+    url: ${DATASOURCE_URL_PROD}
+    driverClassName: oracle.jdbc.OracleDriver
+    username: ${DATASOURCE_USERNAME_PROD}
+    password: ${DATASOURCE_PASSWORD_PROD}
+
+    # The SQL dialect makes Hibernate generate better SQL for the chosen database
+    jpa:
+      properties.hibernate.dialect: org.hibernate.dialect.Oracle10gDialect
+      show-sql: true
+
+    messages:
+      basename: messages/messages
+      encoding: UTF-8
+
+#nivel de log
+logging:
+  level:
+    root: DEBUG
+    net:
+      portic:
+        adt: DEBUG
+    org.hibernate.SQL: TRACE
+    org.hibernate.type.descriptor.sql: DEBUG
+
+# ENVIO EMAIL
+REBOTE_MAILHOST : mailhost.portic.net
+SEND_EMAIL_OUTSIDE : false
